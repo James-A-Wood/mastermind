@@ -1,0 +1,27 @@
+{
+    "name": "Mastermined!",
+    "short_name": "Mastermined!",
+    "description": "A code-guessing game for YOU!",
+    "icons": [{
+        "src": "/mastermind/images/mastermind_icon_64.png",
+        "sizes": "64x64",
+        "type": "image/png"
+    }, {
+        "src": "/mastermind/images/mastermind_icon_128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+    }, {
+        "src": "/mastermind/images/mastermind_icon_256.png",
+        "sizes": "256x256",
+        "type": "image/png"
+    }, {
+        "src": "/mastermind/images/mastermind_icon_512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
+    }],
+    "start_url": "/mastermind/",
+    "display": "fullscreen",
+    "theme_color": "black",
+    "background_color": "black"
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="navy">
+    <title>Mastermind</title>
+    <script src="js/mastermind.js" type="module"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- PWA Stuff -->
+    <link rel="manifest" href="mastermind_manifest.json">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="images/mastermind_icon_180.png">
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("mastermind_service_worker.js", {
+                scope: "/mastermind/"
+            }).then(registration => {
+                // console.log("ServiceWorker registration successful with scope: ", registration.scope);
+            }, err => {
+                // console.log(err);
+            });
+        }
+    </script>
+
+    <style>
+        .my-template {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="timer-display">0:00</div>
+
+    <div id="mastermind-table">
+        <div id="answer-window">
+            <div style="flex: 1;"></div>
+            <div id="answer-pegs-holder">
+                <div class="answer-peg-slot my-template">
+                    <div class="answer-peg my-template"></div>
+                </div>
+            </div>
+            <div style="flex: 1;"></div>
+        </div>
+        <div id="rows-holder">
+            <div class="row my-template">
+                <div class="number-holder row-text"></div>
+                <div class="peg my-template">
+                    <span class="circle"></span>
+                    <span class="focus-ring"></span>
+                </div>
+                <div class="results-holder">
+                    <div class="bwpins-holder">
+                        <div class="num-black">0</div>
+                        <div class="num-white">0</div>
+                        <div class="num-other" style="display: none;">0</div>
+                    </div>
+                    <p class="submit-button row-text">OK</p>
+                </div>
+            </div>
+        </div>
+        <div id="color-picker">
+            <div id="color-choices-holder">
+                <div class="color-choice my-template"></div>
+            </div>
+            <div id="keyboard-shortcuts">
+                <p class="shortcut-letter"></p>
+            </div>
+            <div id="message-window">
+                <button id="play-again-button" class="message-button" tabindex="-1">Play Again</button>
+                <button id="choose-level-button" class="message-button" tabindex="-1">Choose Level</button>
+            </div>
+
+        </div>
+        <div id="results-window">
+            <span>Message!</span>
+        </div>
+    </div>
+
+    <img id="settings-icon" class="settings-toggler" src="images/dots.svg">
+
+    <div id="settings-window">
+        <span id="settings-dismiss" class="settings-toggler">X</span>
+
+        <div id="settings-holder">
+            <div>
+                <label>
+                    <input type="checkbox" id="show-keyboard-shortcuts-checkbox">
+                    <span class="japanese">キーボード・ショートカットを表示する</span>
+                    <span class="english">Show keyboard shortcuts</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="koukaon-checkbox">
+                    <span class="japanese">効果音を使う</span>
+                    <span class="english">Use sound effects</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="auto-advance">
+                    <span class="japanese">フォーカスを自動的に進める</span>
+                    <span class="english">Auto-advance peg focus</span>
+                </label>
+            </div>
+            <div id="language-toggler">
+                <div>
+                    <label>
+                        <input type="radio" name="language-toggler" value="english">English
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="radio" name="language-toggler" value="japanese">日本語
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="level-picker">
+        <h1 id="title">MasterMind!</h1>
+        <p class="level-button easy" data-num_elements="3">
+            <span class="english">Easy</span>
+            <span class="japanese">楽々</span>
+        </p>
+        <p class="level-button medium" data-num_elements="4">
+            <span class="english">Medium</span>
+            <span class="japanese">中くらい</span>
+        </p>
+        <p class="level-button difficult" data-num_elements="5">
+            <span class="english">Hard</span>
+            <span class="japanese">地獄</span>
+        </p>
+    </div>
+
+    <div id="install-button-holder">
+        Install App?
+        <span class="respond-button" id="install-button">O</span>
+        <span class="respond-button" id="dismiss-button">X</span>
+    </div>
+
+</body>
+
+</html>
